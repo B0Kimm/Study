@@ -9,16 +9,8 @@ class Controller :
         self.entity = Entity()
         self.service = Service()
 
-    def preprocessing(self) :
-        pass
 
-    def modeeling(self) :
-        pass
-
-    def learning(self) :
-        pass
-
-    def submit(self) :
+    def naver_cartoon(self):
         pass
 
 if __name__ == "__main__":

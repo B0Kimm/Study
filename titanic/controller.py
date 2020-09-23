@@ -43,19 +43,34 @@ class Controller:
         this = service.fareBand_nominal(this)
         print(f'요금 정제 결과 : {this.train.head()}')
         this = service.drop_feature(this, 'Fare')
-        print(f'전체 정제 결과 : {this.train.head()}')
-        print(f'train na 정제 결과 : {this.train.isnull().sum()}')
-        print(f'test na 정제 결과 : {this.train.isnull().sum()}')
+        print(f'-----------------------------------TRAIN 정제 결과-----------------------------------')
+        print(f'{this.train.head()}')
+        print(f'-----------------------------------TEST 정제 결과-----------------------------------')
+        print(f'{this.test.head()}')
+        print(f'-----------------------------------TRAIN na 체크-----------------------------------')
+        print(f'{this.train.isnull().sum()}')
+        print(f'-----------------------------------Test na 체크-----------------------------------')
+        print(f'{this.test.isnull().sum()}')
 
         return this
     
-    def learning(self) :
-        pass
+    def learning(self, train, test) :
+        service = self.service
+        this = self.modelling(train, test)
+        print('===================================Learning 결과==========================')
+        print(f'결정트리 검증결과 : {service.accuracy_by_dtree(this)}')
+        print(f'랜덤포레스트 검증결과 : {service.accuracy_by_rforest(this)}')
+        print(f'나이브베이즈 검증결과 : {service.accuracy_by_nb(this)}')
+        print(f'KNN 검증결과 : {service.accuracy_by_knn(this)}')
+        print(f'SVM 검증결과 : {service.accuracy_by_svm(this)}')
+
+        return this
+
 
     def submit(self) : # machine이 된다. 이 단계에서는 캐글에게 내 머신을 보내서 평가 받게 하는 것
         pass
 
 if __name__ == '__main__':
     ctrl = Controller()
-    ctrl.modelling('train.csv', 'test.csv')
+    ctrl.learning('train.csv', 'test.csv')
 

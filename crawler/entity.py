@@ -7,3 +7,9 @@ class Entity:
     path : str = ''
     api : str = ''
     apikey : str = ''
+    # dict : object = None
+    # columns : object = None
+    # new_folder_name : str = ''
+    # tag : str = ''
+    # attrs : str = ''
+    # replace_str : str = ''

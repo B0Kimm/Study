@@ -1,10 +1,11 @@
 import sys
-sys.path.insert(0, '/Users/USER/SBA_Project')
+sys.path.insert(0, '/Users/USER/SbaProjects')
 
 from crawler.entity import Entity
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from pandas import DataFrame
+import os, shutil
 
 class Service :
     def __init__(self) :
@@ -22,10 +23,10 @@ class Service :
         url= 'https://comic.naver.com/webtoon/weekday.nhn'
         response = urlopen(url)
         soup = BeautifulSoup(response, parser)
-        return BeautifulSoup(response,parser)
+        return soup
 
 
-    def create_folder_week(self) :
+    def create_folder_by_week(self) :
         weekday_dict = dict()
         weekday_dict['mon'] ='월요일'
         weekday_dict['tue'] ='화요일'
@@ -34,9 +35,8 @@ class Service :
         weekday_dict['fri'] ='금요일'
         weekday_dict['sat'] ='토요일'
         weekday_dict['sun'] ='일요일'
-
-        import os, shutil
-        myfolder = 'c:\\simple\\'
+        
+        myfolder = './simple/'
 
         try:
             if not os.path.exists(myfolder): 
@@ -53,15 +53,10 @@ class Service :
 
         except FileExistsError as err:
             print(err)
+        return myfolder
 
-    def save_img(self) :
-        image_file = urlopen(mysrc)
-        filename = myfolder + weekday_dict[myweekday] + '\\' + mytitle +'.jpg'
-        
-        myfile = open(filename, mode='wb')
-        myfile.write(image_file.read()) 
-        myfile.close()
-        
+    @ staticmethod    
+    def targets(this) :
         mytarget = soup.find_all('div', attrs = {'class':'thumb'})
         mylist = []
 
@@ -76,12 +71,22 @@ class Service :
             imgtag = abcd.find('img')
             mytitle = imgtag.attrs['title'].strip()
             mytitle = mytitle.replace('?','').replace(':','')
-    
 
             mysrc = imgtag.attrs['src']
-            return saveFile(mysrc, myweekday, mytitle)
+            saveFile(mysrc, myweekday, mytitle)
+    
+    @ staticmethod
+    def save_image_file(this,folder,src,key, title) :
+        image_file = urlopen(mysrc)
+        key = myweekday
+        filename = myfolder + weekday_dict[myweekday] + '\\' + mytitle +'.jpg'
+        
+        myfile = open(filename, mode='wb')
+        myfile.write(image_file.read()) 
+        myfile.close()
 
-    def create_csv_file(self, clist) :
+    @ staticmethod
+    def create_csv_file(this,clist) :
         sublist = []
         sublist.append(mytitleid)
         sublist.append(myweekday)
