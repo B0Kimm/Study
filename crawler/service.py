@@ -57,6 +57,7 @@ class Service :
 
     @ staticmethod    
     def targets(this) :
+        this = self.entity
         mytarget = soup.find_all('div', attrs = {'class':'thumb'})
         mylist = []
 
