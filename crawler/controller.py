@@ -1,65 +1,27 @@
-<<<<<<< HEAD
 import sys
 sys.path.insert(0, '/Users/USER/SbaProjects')
 
 from crawler.entity import Entity
 from crawler.service import Service
 
-class Controller:
+class Controller :
     def __init__(self) :
         self.entity = Entity()
         self.service = Service()
-        
 
-    def preprocessing(self, train, test):
-         pass
-    
-     def modelling(self, train, test):
-         pass
-        
-     def learning(self) :
-         pass
+    def preprocessing(self) :
+        pass
 
-     def submit(self) :
-         pass
+    def modeeling(self) :
+        pass
 
-if __name__ == '__main__' :
+    def learning(self) :
+        pass
+
+    def submit(self) :
+        pass
+
+if __name__ == "__main__":
     api = Controller()
-    servicne = Service()
+    service = Service()
     service.naver_cartoon('https://comic.naver.com/webtoon/weekday.nhn')
-
-
-    
-=======
-import sys
-sys.path.insert(0, '/Users/USER/SbaProjects')
-
-from crawler.entity import Entity
-from crawler.service import Service
-
-class Controller:
-    def __init__(self) :
-        self.entity = Entity()
-        self.service = Service()
-        
-
-    def preprocessing(self, train, test):
-         pass
-    
-     def modelling(self, train, test):
-         pass
-        
-     def learning(self) :
-         pass
-
-     def submit(self) :
-         pass
-
-if __name__ == '__main__' :
-    api = Controller()
-    servicne = Service()
-    service.naver_cartoon('https://comic.naver.com/webtoon/weekday.nhn')
-
-
-    
->>>>>>> 28f04485b005846a6db96411bd8350614e91e898
