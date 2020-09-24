@@ -1,8 +1,13 @@
 from dataclasses import dataclass
+'''
+context = '/Users/USER/SbaProjects/...'
+fname = /titanic/data
 
+'''
 @dataclass
-class Entity:
-    context : str = '/Users/USER/SbaProjects/titanic/data/'
+class FileReader:
+
+    context : str = ''
     fname : str = ''
     train : object = None
     test: object = None

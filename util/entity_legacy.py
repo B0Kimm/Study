@@ -1,5 +1,5 @@
 class Entity:
-
+    
     # 밑의 것이 위의 것으로 간소화 됨     
     def __init__(self, context, fname, train, test, id, label):
          self._context = context # _ 1개는 default 접근 의미, _ 2개는 private 접근 의미
