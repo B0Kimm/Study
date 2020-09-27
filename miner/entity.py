@@ -2,6 +2,6 @@ from dataclasses import dataclass
 
 @dataclass
 class Entity:
-    context: str = '/Users/USER/SbaProjects/miner/data/'
+    context: str = ''
     fname: str = ''
     target: str = ''

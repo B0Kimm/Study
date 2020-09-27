@@ -147,7 +147,7 @@ class Service:
         for word in mypos :
             if not word[1] in ['Josa', 'Eomi', 'Punctuation', 'Verb']:
                 if len(word[0]) >= 2 :
-                imsi.append(word[0])
+                    imsi.append(word[0])
 
         temp = (' '.join(imsi)).strip()
         results.append(temp)
